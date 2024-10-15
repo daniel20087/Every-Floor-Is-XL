@@ -1,8 +1,8 @@
 local XLCurseEveryFloor = RegisterMod("Every Floor Is XL", 1)
 
 function XLCurseEveryFloor:GiveXLCurse()
-    -- Disregard mod if it's a challenge run.
-    if Game().Challenge ~= Challenge.CHALLENGE_NULL then
+    -- Disregard mod if it's a challenge run or if it's Greed Mode.
+    if Game().Challenge ~= Challenge.CHALLENGE_NULL or Game():IsGreedMode() then
         return
     end
 
@@ -14,11 +14,16 @@ function XLCurseEveryFloor:GiveXLCurse()
         return
     end
 
+    -- Check if the current stage is the Hush floor and skip it.
+    if level:GetAbsoluteStage() == LevelStage.STAGE6 and level:IsAltStage() then -- STAGE6 (Stage 10) + AltStage for Hush
+        return
+    end
+
     -- Check if it's already an XL floor, and if not, apply the XL curse.
     local curses = level:GetCurses()
     if curses ~= LevelCurse.CURSE_OF_LABYRINTH then
         -- Set to XL curse.
-        return LevelCurse.CURSE_OF_LABYRINTH
+        level:AddCurse(LevelCurse.CURSE_OF_LABYRINTH)
     end
 end
 
