@@ -1,2 +1,0 @@
-Mod is a messy mess of code so heres how to use it
-1: Either disable it on womb or whatever you do, do not go onto hush floor or its gonna bug out.
