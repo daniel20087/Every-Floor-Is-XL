@@ -6,16 +6,20 @@ function XLCurseEveryFloor:GiveXLCurse()
         return
     end
 
-    -- Get current level.
+    -- get current floor.
     local level = Game():GetLevel()
 
     -- stage is The Void (Stage 12) skip
-    if level:GetAbsoluteStage() == LevelStage.STAGE7 then -- STAGE7 corresponds to The Void (Stage 12)
+    if level:GetAbsoluteStage() == LevelStage.STAGE7 then -- dellirium floor
+        return
+    end
+
+    if level:GetAbsoluteStage() == LevelStage.STAGE4_2 then -- if player uses we need to go deeper to get to womb 2
         return
     end
 
     -- stage is the Hush floor skip
-    if level:GetAbsoluteStage() == LevelStage.STAGE6 and level:IsAltStage() then -- STAGE6 (Stage 10) + AltStage for Hush
+    if level:GetAbsoluteStage() == LevelStage.STAGE4_3 then -- hush floor
         return
     end
 
