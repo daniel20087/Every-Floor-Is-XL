@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <name>Every Floor Is XL</name>
+    <directory>every floor is xl</directory>
+    <id>3512978594</id>
+    <description>This mod makes every single floor in the game XL. (Except for Hush, Womb II, Void, Depths II (though in a regular run you can't reach Depths II/Womb II without using we need to go deeper, but removed just in case) Greedier, and Challenge mode as that crashes or softlocks the game. I also made black candle a random item.)</description>
+    <version>1.3</version>
+    <visibility>Public</visibility>
+    <tag id="Rooms"/>
+    <tag id="Floors"/>
+</metadata>
