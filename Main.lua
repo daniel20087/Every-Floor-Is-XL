@@ -5,12 +5,27 @@ function XLCurseEveryFloor:GiveXLCurse()
     if Game().Challenge ~= Challenge.CHALLENGE_NULL or Game():IsGreedMode() then -- no greed or challenge
         return
     end
-
+    local isaacPlayerID = Isaac.GetPlayer()
     -- get current floor.
     local level = Game():GetLevel()
+    local stageXL = level:GetAbsoluteStage()
     --below code stops void, mom, womb ii, and hush from having xl
-    if level:GetAbsoluteStage() == LevelStage.STAGE7 or level:GetAbsoluteStage() == LevelStage.STAGE3_2 or level:GetAbsoluteStage() == LevelStage.STAGE4_2 or level:GetAbsoluteStage() == LevelStage.STAGE4_3 then
+    if stageXL == LevelStage.STAGE7 or stageXL == LevelStage.STAGE3_2 or stageXL == LevelStage.STAGE4_2 or stageXL == LevelStage.STAGE4_3 then
         return
+    end
+    local hasKeyPiece1 = isaacPlayerID:GetCollectibleNum(CollectibleType.COLLECTIBLE_KEY_PIECE_1)
+    local hasKeyPiece2 = isaacPlayerID:GetCollectibleNum(CollectibleType.COLLECTIBLE_KEY_PIECE_2)
+    if stageXL == LevelStage.STAGE6 then -- this is for the player to be able to reach void in a run as void portal doesnt spawn in blue baby fight so they enter via mega satan fight
+        if hasKeyPiece1 == 0 then
+            isaacPlayerID:AddCollectible(CollectibleType.COLLECTIBLE_KEY_PIECE_1)
+        end
+
+        if hasKeyPiece2 == 0 then
+            isaacPlayerID:AddCollectible(CollectibleType.COLLECTIBLE_KEY_PIECE_2)
+        end
+
+        return
+            LevelCurse.CURSE_OF_LABYRINTH
     end
 
     return LevelCurse.CURSE_OF_LABYRINTH
