@@ -4,7 +4,7 @@
     <directory>every floor is xl</directory>
     <id>3512978594</id>
     <description>This mod makes every single floor in the game XL. In order to reach void go through the void portal in mega satan fight (made it give player both key pieces on that floor) t as the portal doesnt spawn in the blue baby or delirium fight (All floors are XL except for Hush, Womb II, Void, Depths II (though in a regular run you can't reach Depths II/Womb II without using we need to go deeper, but removed just in case) Greedier, and Challenge mode as that crashes or softlocks the game. I also made black candle turn into a random item.)</description>
-    <version>1.5</version>
+    <version>1.7</version>
     <visibility>Public</visibility>
     <tag id="Rooms"/>
     <tag id="Floors"/>

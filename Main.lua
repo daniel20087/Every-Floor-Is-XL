@@ -41,7 +41,7 @@ function XLCurseEveryFloor:OnPickupMorph(pickup)
     local itemConfig = Isaac.GetItemConfig()
 
     while not isPassive do
-        randomItemID = math.random(1, 719) --if anyone wants to maintain this code in the future go right ahead
+        randomItemID = math.random(1, 732) --if anyone wants to maintain this code in the future go right ahead
         local collectibleConfig = itemConfig:GetCollectible(randomItemID)
         if collectibleConfig and collectibleConfig.Type == ItemType.ITEM_PASSIVE and randomItemID ~= CollectibleType.COLLECTIBLE_BLACK_CANDLE then
             isPassive = true
@@ -50,6 +50,14 @@ function XLCurseEveryFloor:OnPickupMorph(pickup)
 
     pickup:Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, randomItemID, true, true, true)
 end
+function XLCurseEveryFloor:MegaSatanWarning()
+    local isaacHud = Game():GetHUD()
+    if Game():GetLevel():GetAbsoluteStage() == LevelStage.STAGE6 then
 
+        isaacHud:ShowFortuneText("Go through mega satan to reach void")
+        
+    end
+end
 XLCurseEveryFloor:AddCallback(ModCallbacks.MC_POST_CURSE_EVAL, XLCurseEveryFloor.GiveXLCurse)
 XLCurseEveryFloor:AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, XLCurseEveryFloor.OnPickupMorph)
+XLCurseEveryFloor:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, XLCurseEveryFloor.MegaSatanWarning)
